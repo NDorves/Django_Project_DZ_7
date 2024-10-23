@@ -1,17 +1,18 @@
 # Добавьте маршруты в файле urls.py, чтобы использовать эти классы.
 #import include
-from django.urls import path
+from django.urls import path, include
 from rest_framework.routers import DefaultRouter
 
 from dz_first_app import views
 from dz_first_app.views import *
 
 
-# router = DefaultRouter()
-# router.register(r'tasks', TaskListCreateViewSet)
+router = DefaultRouter()
+router.register(r'categories', CategoryViewSet)
+
 urlpatterns = [
     path('', views.hello, name='hello'),
- #    path('task_create/', task_create),
+    path('', include(router.urls)),
     path('tasks/statistics/', TaskStatisticsView.as_view(), name='task_statistics'),
  # #   path('view/', simple_view),
  #    path('task_list/', task_list),
@@ -23,4 +24,5 @@ urlpatterns = [
     path('sub/tasks/', SubTaskListCreateView.as_view(), name='subtask_list_create'),
     path('sub/tasks/<int:pk>', SubTaskDetailUpdateDeleteView.as_view(), name='subtask_update_delete')
 ]
+
 

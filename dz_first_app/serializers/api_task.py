@@ -16,6 +16,12 @@ class SubTaskCreateSerializer(serializers.ModelSerializer):
 
 
 # ----------------Задание 2:Определите CategoryCreateSerializer в файле serializers.py.--------------------
+class CategorySerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Category
+        fields = '__all__'
+
+
 class CategoryCreateSerializer(serializers.ModelSerializer):
     class Meta:
         model = Category
