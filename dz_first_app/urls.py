@@ -2,6 +2,7 @@
 #import include
 from django.urls import path, include
 from rest_framework.routers import DefaultRouter
+from rest_framework_simplejwt.views import TokenObtainPairView
 
 from dz_first_app import views
 from dz_first_app.views import *
@@ -13,6 +14,8 @@ router.register(r'categories', CategoryViewSet)
 urlpatterns = [
     path('', views.hello, name='hello'),
     path('', include(router.urls)),
+    path('token/', TokenObtainPairView.as_view()),
+    path('token/refresh', TokenRefreshView.as_view(), name='login_refresh'),
     path('tasks/statistics/', TaskStatisticsView.as_view(), name='task_statistics'),
  # #   path('view/', simple_view),
  #    path('task_list/', task_list),
