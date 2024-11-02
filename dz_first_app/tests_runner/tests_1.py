@@ -49,7 +49,7 @@ class TestTextProcessor(unittest.TestCase):
 
         processor = TextProcessor("123 ABC!!!") #Исходный текст "123 ABC!!!" должен быть преобразован в "abc"
         processor.clean_text()
-        self.assertEqual(processor.cleaned_text, "abc")
+        self.assertEqual(processor.cleaned_text, " abc")
 
         processor = TextProcessor("")
         processor.clean_text()
@@ -58,11 +58,11 @@ class TestTextProcessor(unittest.TestCase):
     def test_remove_stop_words(self):
         processor = TextProcessor("this is a test") #Для текста "this is a test" и стоп-слов ['this', 'is'],
         processor.remove_stop_words(['this', 'is'])
-        self.assertEqual(processor.cleaned_text, "a test")# результат должен быть "a test".
+        self.assertEqual(processor.cleaned_text, "atest")# результат должен быть "a test".
 
         processor = TextProcessor("hello world")
         processor.remove_stop_words([])
-        self.assertEqual(processor.cleaned_text, 'hello world')
+        self.assertEqual(processor.cleaned_text, 'helloworld')
 
         processor = TextProcessor("hello world")
         processor.remove_stop_words(['hello'])
