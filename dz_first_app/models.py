@@ -1,7 +1,37 @@
+from django.contrib.auth.models import PermissionsMixin, UserManager, User
 from django.db import models
-
+from django.contrib.auth.base_user import AbstractBaseUser
+from django.core.validators import MinLengthValidator
+from django.utils.translation import gettext_lazy as _
 
 # Create your models here.
+
+# #class User(models.Model):
+# class User(AbstractBaseUser):
+#
+#     username = models.CharField(_("username"), max_length=50, unique=True,
+#                                 error_messages={"unique": _("A user with that username already exists."), })
+#     first_name = models.CharField(_("first name"), max_length=40, validators=[MinLengthValidator(2)],)
+#     last_name = models.CharField(_("last name"), max_length=40, validators=[MinLengthValidator(2)],)
+#     email = models.EmailField(_("email address"), max_length=150, unique=True)
+#     phone = models.CharField(max_length=75, null=True, blank=True)
+#     is_staff = models.BooleanField(default=False)
+#     is_active = models.BooleanField(default=True)
+#     date_joined = models.DateTimeField(name="registered", auto_now_add=True)
+#     last_login = models.DateTimeField(null=True, blank=True)
+#     updated_at = models.DateTimeField(auto_now=True)
+#     deleted_at = models.DateTimeField(null=True, blank=True)
+#     deleted = models.BooleanField(default=False)
+#
+#     # USERNAME_FIELD = "email"
+#     # REQUIRED_FIELDS = ["username", "first_name", "last_name",]
+#     #
+#     # objects = UserManager()
+#
+#     def __list__(self):
+#         return f"{self.last_name} {self.first_name}"
+
+
 class Category(models.Model):
     name = models.CharField(max_length=100)
 
@@ -30,6 +60,7 @@ class Task(models.Model):
     deadline = models.DateTimeField(default='Now')  # Дата и время дедлайн.
     created_at = models.DateTimeField(auto_now_add=True)  #: Дата/время создания.Авт-тич-е зап-е.
     is_banned = models.BooleanField(default=False)
+    owner = models.ForeignKey(User, on_delete=models.CASCADE, related_name='tasks', null=True) #включениe поля owner
 
     def __str__(self):
         return self.title
@@ -58,6 +89,7 @@ class SubTask(models.Model):
     deadline = models.DateTimeField()  # Дата/время дедлайн(срок).
     created_at = models.DateTimeField(auto_now_add=True)  #: Дата/время создания.Авт-тич-е зап-е.
     is_banned = models.BooleanField(default=False)
+    owner = models.ForeignKey(User, on_delete=models.CASCADE, related_name='subtasks', null=True)
 
     def __str__(self):  # Добавить метод str, который возвращает название подзадачи.
         return self.title
@@ -68,3 +100,5 @@ class SubTask(models.Model):
         ordering = ['-created_at']  # Сортировка по убыванию даты создания.
         verbose_name = 'SubTask'  # Человекочитаемое имя модели: 'SubTask'.
         unique_together = ['title']  # Уникальность по полю 'title'.
+
+

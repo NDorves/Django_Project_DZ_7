@@ -1,10 +1,10 @@
 from datetime import datetime
 from django.contrib.auth import authenticate
-from rest_framework import status, viewsets
+from rest_framework import status, viewsets, generics
 from rest_framework.decorators import action
 from django.utils import timezone
 from rest_framework.exceptions import NotFound
-from rest_framework.generics import GenericAPIView, ListCreateAPIView, RetrieveUpdateDestroyAPIView
+from rest_framework.generics import GenericAPIView, ListCreateAPIView, RetrieveUpdateDestroyAPIView, ListAPIView
 from rest_framework.permissions import AllowAny, IsAuthenticated
 from rest_framework.pagination import PageNumberPagination, CursorPagination
 from rest_framework.reverse import reverse
@@ -12,8 +12,9 @@ from rest_framework_simplejwt.authentication import JWTAuthentication
 from rest_framework_simplejwt.tokens import RefreshToken
 from dz_first_app.models import SubTask, Task, Category
 from dz_first_app.pagination import TaskPagination
+from dz_first_app.permissions import IsOwner
 from dz_first_app.serializers.api_task import SubTaskCreateSerializer, TaskSerializer, TaskListCreateSerializers, \
-    SubTaskSerializer, CategorySerializer
+    SubTaskSerializer, CategorySerializer, TaskSerializer, SubTaskSerializer
 from django.http import HttpResponse
 from rest_framework.views import APIView
 
@@ -80,10 +81,11 @@ class TaskStatisticsView(APIView):
         return Response(statistics, status=status.HTTP_200_OK)
 
 
-# class TaskPagination(PageNumberPagination): #Кастомный класс пагинации, наследуемый от PageNumberPagination
-#     page_size = 5   # Определяет количество элементов на странице
-#     page_size_query_param = 'page_size'  #Позволяет клиентам указывать размер страницы через параметр запроса page_size.
-#     max_page_size = 100     # Ограничивает максимальный размер страницы
+class TaskPagination(PageNumberPagination): #Кастомный класс пагинации, наследуемый от PageNumberPagination
+    page_size = 5   # Определяет количество элементов на странице
+    page_size_query_param = 'page_size'  #Позволяет клиентам указывать размер страницы через параметр запроса page_size.
+    max_page_size = 100     # Ограничивает максимальный размер страницы
+
 
 # class TaskCursorPagination(CursorPagination):
 #     page_size = 5
@@ -103,6 +105,40 @@ class CategoryViewSet(viewsets.ModelViewSet):
         return Response({'task_count': task_count})
 
 
+# class TaskCreateView(generics.CreateAPIView):
+#     queryset = Task.objects.all()
+#     serializer_class = TaskSerializer
+#     permission_classes = [IsAuthenticated]
+#
+#     def perform_create(self, serializer):
+#         serializer.save(owner=self.request.user)
+#
+#
+# class SubTaskCreateView(generics.CreateAPIView):
+#     queryset = SubTask.objects.all()
+#     serializer_class = SubTaskSerializer
+#     permission_classes = [IsAuthenticated]
+#
+#     def perform_create(self, serializer):
+#         serializer.save(owner=self.request.user)
+class UserTaskListView(ListAPIView):
+    serializer_class = TaskSerializer
+    permission_classes = [IsAuthenticated]
+
+    def get_queryset(self):
+        return Task.objects.filter(owner=self.request.user)     # self.request.user: Извлекает текущего
+        # аутентифицированного пользователя из запроса, чтобы использовать его для фильтрации объектов
+
+
+class UserSubTaskListView(ListAPIView):
+    serializer_class = TaskSerializer
+    permission_classes = [IsAuthenticated]
+
+    def get_queryset(self):
+        return SubTask.objects.filter(owner=self.request.user)      # self.request.user: Извлекает текущего
+    # аутентифицированного пользователя из запроса, чтобы использовать его для фильтрации объектов
+
+
 class TaskListCreateView(ListCreateAPIView):
     queryset = Task.objects.all()
     serializer_class = TaskSerializer
@@ -112,8 +148,10 @@ class TaskListCreateView(ListCreateAPIView):
     filter_fields = ['status', 'deadline']
     search_fields = ['title', 'description']
     ordering_fields = ['created_at']
-  #  permission_classes = [IsAuthenticated]
-
+    authentication_classes = [JWTAuthentication]
+    permission_classes = [IsOwner]
+    # permission_classes = [IsOwnerOrReadOnly]
+    # permission_classes = [IsAdminOrOwner]
 
     def get_serializer_class(self):
         if self.request.method == 'POST':
@@ -140,6 +178,7 @@ class TaskListCreateView(ListCreateAPIView):
 class TaskDetailUpdateDeleteView(RetrieveUpdateDestroyAPIView):
     queryset = Task.objects.all()
     serializer_class = TaskSerializer
+    permission_classes = [IsOwner]
 
 
 class SubTaskPagination(PageNumberPagination):
@@ -161,7 +200,8 @@ class SubTaskListCreateView(ListCreateAPIView):
     filter_fields = ['status', 'deadline']
     search_fields = ['title', 'description']
     ordering_fields = ['created_at']
-    # permission_classes = [IsAuthenticated]
+    authentication_classes = [JWTAuthentication]
+    permission_classes = [IsOwner]
 
     def get_serializer_class(self):
         if self.request.method == 'POST':
@@ -185,15 +225,23 @@ class SubTaskListCreateView(ListCreateAPIView):
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
-
 class SubTaskDetailUpdateDeleteView(RetrieveUpdateDestroyAPIView):
     queryset = SubTask.objects.all()
     serializer_class = SubTaskSerializer
+    permission_classes = [IsOwner]
     permission_classes = [IsAuthenticated]
 
 
+class TaskDetailView(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Task.objects.all()
+    serializer_class = TaskSerializer
+    permission_classes = [IsOwner]
 
 
+class SubTaskDetailView(generics.RetrieveUpdateDestroyAPIView):
+    queryset = SubTask.objects.all()
+    serializer_class = SubTaskSerializer
+    permission_classes = [IsOwner]
 
 
 

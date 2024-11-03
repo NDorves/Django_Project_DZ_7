@@ -48,6 +48,7 @@ class SubTaskSerializer(serializers.ModelSerializer):
     class Meta:
         model = SubTask
         fields = '__all__'
+        read_only_fields = ['owner']
 
 
 class TaskSerializer(serializers.ModelSerializer):
@@ -56,6 +57,7 @@ class TaskSerializer(serializers.ModelSerializer):
     class Meta:
         model = Task
         fields = '__all__'
+        read_only_fields = ['owner']
 
     # @classmethod
     # def as_view(cls):

@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     # 3ed party
     'rest_framework',
     'rest_framework_simplejwt',
+    'drf_yasg',
 
     # local
     'dz_first_app.apps.DzFirstAppConfig',

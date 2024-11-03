@@ -1,5 +1,4 @@
 # Добавьте маршруты в файле urls.py, чтобы использовать эти классы.
-#import include
 from django.urls import path, include
 from rest_framework.routers import DefaultRouter
 from rest_framework_simplejwt.views import TokenObtainPairView
@@ -14,6 +13,8 @@ router.register(r'categories', CategoryViewSet)
 urlpatterns = [
     path('', views.hello, name='hello'),
     path('', include(router.urls)),
+    path('user=tasks/', UserTaskListView.as_view()),
+    path('user-subtasks/', UserSubTaskListView.as_view()),
     path('token/', TokenObtainPairView.as_view()),
     path('token/refresh', TokenRefreshView.as_view(), name='login_refresh'),
     path('tasks/statistics/', TaskStatisticsView.as_view(), name='task_statistics'),

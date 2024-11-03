@@ -4,26 +4,28 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0b326cb3-b184-4df0-9ab0-888880003565" name="Changes" comment="&quot;Добавлены строковые представления и метаданные к моделям Task, SubTask и Category. Настроена админка.&quot;">
+    <list default="true" id="0b326cb3-b184-4df0-9ab0-888880003565" name="Changes" comment="Задание 1. Тестирование функционала по работе с JSON файлом">
       <change afterPath="$PROJECT_DIR$/.env" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/Django_Shell_Conspect.txt" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/HAFG_10.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/HAFG_14.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/HAFG_15.txt" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/conspect.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/dz_first_app/migrations/0003_alter_task_options.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/dz_first_app/migrations/0004_alter_task_options.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/dz_first_app/migrations/0005_alter_task_options.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/dz_first_app/migrations/0006_alter_task_categories.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/dz_first_app/migrations/0007_alter_task_categories.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/dz_first_app/serializers/api_task.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dz_first_app/pagination.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dz_first_app/serializers/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dz_first_app/tests_runner/__init__.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/config/settings.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/config/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/dz_first_app/serializers/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/dz_first_app/permissions.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/dz_first_app/.env" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dz_first_app/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/dz_first_app/admin.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dz_first_app/migrations/0003_alter_task_options.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dz_first_app/migrations/0004_alter_task_options.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dz_first_app/migrations/0005_alter_task_options.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dz_first_app/migrations/0006_alter_task_categories.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dz_first_app/migrations/0007_alter_task_categories.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dz_first_app/migrations/0008_subtask_is_banned_task_is_banned_alter_task_deadline.py" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/dz_first_app/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/dz_first_app/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dz_first_app/tests.py" beforeDir="false" afterPath="$PROJECT_DIR$/dz_first_app/tests.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dz_first_app/serializers/api_task.py" beforeDir="false" afterPath="$PROJECT_DIR$/dz_first_app/serializers/api_task.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/dz_first_app/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/dz_first_app/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/dz_first_app/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/dz_first_app/views.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
@@ -52,26 +54,33 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Python.main.executor&quot;: &quot;Run&quot;,
-    &quot;Python.views.executor&quot;: &quot;Debug&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/dorve/PycharmProjects/django_shop_app&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Python tests.Python tests for tests.TestFileOperations.executor": "Run",
+    "Python tests.Python tests for tests.TestFileOperations.test_write_and_read_empty_file.executor": "Run",
+    "Python tests.Python tests for tests.TestFileOperations.test_write_and_read_file.executor": "Run",
+    "Python tests.Python tests for tests.TestFileOperations.test_write_bad_data_into_file.executor": "Run",
+    "Python tests.Python tests for tests_1.TestTextProcessor.executor": "Run",
+    "Python tests.Python tests for tests_1.TestTextProcessor.test_remove_stop_words.executor": "Run",
+    "Python.main.executor": "Run",
+    "Python.views.executor": "Debug",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "master",
+    "ignore.virus.scanning.warn.message": "true",
+    "last_opened_file_path": "C:/Users/dorve/PycharmProjects/Von-VB-agile-project"
   },
-  &quot;keyToStringList&quot;: {
-    &quot;ChangesTree.GroupingKeys&quot;: []
+  "keyToStringList": {
+    "ChangesTree.GroupingKeys": []
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\dorve\PycharmProjects\Django_Project_DZ_7\dz_first_app\tests_runner" />
       <recent name="C:\Users\dorve\PycharmProjects\Django_Project_DZ_7\dz_first_app" />
       <recent name="C:\Users\dorve\PycharmProjects\Django_Project_DZ_7" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.views">
+  <component name="RunManager" selected="Python tests.Python tests for tests_1.TestTextProcessor.test_remove_stop_words">
     <configuration name="main" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
       <module name="Django_Project_DZ_7" />
       <option name="ENV_FILES" value="" />
@@ -94,31 +103,88 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="views" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+    <configuration name="Python tests for dz_first_app.tests_runner.tests.TestFileOperations" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
       <module name="Django_Project_DZ_7" />
       <option name="ENV_FILES" value="" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
       <option name="SDK_HOME" value="" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/dz_first_app" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/dz_first_app/views.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
+      <option name="_new_additionalArguments" value="&quot;&quot;" />
+      <option name="_new_target" value="&quot;dz_first_app.tests_runner.tests.TestFileOperations&quot;" />
+      <option name="_new_targetType" value="&quot;PYTHON&quot;" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Python tests for dz_first_app.tests_runner.tests.TestFileOperations.test_write_and_read_empty_file" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
+      <module name="Django_Project_DZ_7" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/dz_first_app" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="_new_additionalArguments" value="&quot;&quot;" />
+      <option name="_new_target" value="&quot;dz_first_app.tests_runner.tests.TestFileOperations.test_write_and_read_empty_file&quot;" />
+      <option name="_new_targetType" value="&quot;PYTHON&quot;" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Python tests for dz_first_app.tests_runner.tests.TestFileOperations.test_write_bad_data_into_file" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
+      <module name="Django_Project_DZ_7" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/dz_first_app" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="_new_additionalArguments" value="&quot;&quot;" />
+      <option name="_new_target" value="&quot;dz_first_app.tests_runner.tests.TestFileOperations.test_write_bad_data_into_file&quot;" />
+      <option name="_new_targetType" value="&quot;PYTHON&quot;" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Python tests for tests_1.TestTextProcessor" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
+      <module name="Django_Project_DZ_7" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/dz_first_app/tests_runner" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="_new_additionalArguments" value="&quot;&quot;" />
+      <option name="_new_target" value="&quot;tests_1.TestTextProcessor&quot;" />
+      <option name="_new_targetType" value="&quot;PYTHON&quot;" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Python tests for tests_1.TestTextProcessor.test_remove_stop_words" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
+      <module name="Django_Project_DZ_7" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/dz_first_app/tests_runner" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="_new_additionalArguments" value="&quot;&quot;" />
+      <option name="_new_target" value="&quot;tests_1.TestTextProcessor.test_remove_stop_words&quot;" />
+      <option name="_new_targetType" value="&quot;PYTHON&quot;" />
       <method v="2" />
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.views" />
+        <item itemvalue="Python tests.Python tests for tests_1.TestTextProcessor.test_remove_stop_words" />
+        <item itemvalue="Python tests.Python tests for tests_1.TestTextProcessor" />
+        <item itemvalue="Python tests.Python tests for dz_first_app.tests_runner.tests.TestFileOperations" />
+        <item itemvalue="Python tests.Python tests for dz_first_app.tests_runner.tests.TestFileOperations.test_write_bad_data_into_file" />
+        <item itemvalue="Python tests.Python tests for dz_first_app.tests_runner.tests.TestFileOperations.test_write_and_read_empty_file" />
       </list>
     </recent_temporary>
   </component>
@@ -154,7 +220,55 @@
       <option name="project" value="LOCAL" />
       <updated>1727033859429</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="&quot;Добавлены views.py. классы представлений для подзадач на Generic Views. пагинацию, фильтрацию, поиск и сортировку&quot;">
+      <option name="closed" value="true" />
+      <created>1729528293812</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1729528293812</updated>
+    </task>
+    <task id="LOCAL-00004" summary="&quot;Добавлены views.py. классы представлений для подзадач на Generic Views. пагинацию, фильтрацию, поиск и сортировку&quot;">
+      <option name="closed" value="true" />
+      <created>1729693646102</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1729693646102</updated>
+    </task>
+    <task id="LOCAL-00005" summary="Настройка JWT аутентификации и конфигурациив settings.py, маршруты для получения и обновления JWT токенов.">
+      <option name="closed" value="true" />
+      <created>1730162185233</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1730162185233</updated>
+    </task>
+    <task id="LOCAL-00006" summary="Задание 1. Тестирование функционала по работе с JSON файлом&#10;Задание 2. Тестирование функционала по обработке текста">
+      <option name="closed" value="true" />
+      <created>1730243184428</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1730243184428</updated>
+    </task>
+    <task id="LOCAL-00007" summary="Задание 1. Тестирование функционала по работе с JSON файлом&#10;Задание 2. Тестирование функционала по обработке текста">
+      <option name="closed" value="true" />
+      <created>1730243334099</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1730243334099</updated>
+    </task>
+    <task id="LOCAL-00008" summary="Задание 1. Тестирование функционала по работе с JSON файлом">
+      <option name="closed" value="true" />
+      <created>1730576698966</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1730576698966</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -181,7 +295,11 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="'add Django_Project_DZ_7.iml'" />
     <MESSAGE value="&quot;Добавлены строковые представления и метаданные к моделям Task, SubTask и Category. Настроена админка.&quot;" />
-    <option name="LAST_COMMIT_MESSAGE" value="&quot;Добавлены строковые представления и метаданные к моделям Task, SubTask и Category. Настроена админка.&quot;" />
+    <MESSAGE value="&quot;Добавлены views.py. классы представлений для подзадач на Generic Views. пагинацию, фильтрацию, поиск и сортировку&quot;" />
+    <MESSAGE value="Настройка JWT аутентификации и конфигурациив settings.py, маршруты для получения и обновления JWT токенов." />
+    <MESSAGE value="Задание 1. Тестирование функционала по работе с JSON файлом&#10;Задание 2. Тестирование функционала по обработке текста" />
+    <MESSAGE value="Задание 1. Тестирование функционала по работе с JSON файлом" />
+    <option name="LAST_COMMIT_MESSAGE" value="Задание 1. Тестирование функционала по работе с JSON файлом" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -190,6 +308,11 @@
           <url>file://$PROJECT_DIR$/main.py</url>
           <line>8</line>
           <option name="timeStamp" value="1" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/dz_first_app/views.py</url>
+          <line>152</line>
+          <option name="timeStamp" value="3" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
